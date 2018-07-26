@@ -28,7 +28,7 @@ function validateGitBranch {
 printf "${LCYAN}Updating all git repos in current dir and subdirs..${RESET}\n"
 find . -type d -name .git -prune | sed -e 's/.git//g' | ( while read line;
 do
-    cd $line
+    cd $CWD/$line
     if git diff-index --quiet HEAD; then
         if validateGitBranch; then
             echo -e "Updating repo: ${GREEN}$(pwd)${RESET}"
@@ -44,7 +44,6 @@ do
         echo -e "Local changes found in repo: ${ORANGE}$(pwd)${RESET}"
         ((REPOS_NOT_UPDATED=$REPOS_NOT_UPDATED+1))
     fi
-    cd $CWD
 done
 echo "update: $REPOS_UPDATED"
 echo -e "${LCYAN}--- Finished ---${RESET}. Repos updated: ${GREEN}$REPOS_UPDATED${RESET}, Not updated: ${RED}${REPOS_NOT_UPDATED}${RESET}"
