@@ -45,6 +45,5 @@ do
         ((REPOS_NOT_UPDATED=$REPOS_NOT_UPDATED+1))
     fi
 done
-echo "update: $REPOS_UPDATED"
 echo -e "${LCYAN}--- Finished ---${RESET}. Repos updated: ${GREEN}$REPOS_UPDATED${RESET}, Not updated: ${RED}${REPOS_NOT_UPDATED}${RESET}"
 )
